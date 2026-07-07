@@ -1,0 +1,24 @@
+# GWAS v1.1 — Python Dependencies
+# GMGN-Native wallet alert system
+
+# Core
+PyYAML>=6.0
+requests>=2.31
+requests-cache>=1.2
+python-telegram-bot>=20.0
+
+# Webhook server
+Flask>=3.0
+gunicorn>=21.2
+
+# Database
+# (sqlite3 is stdlib)
+
+# Utilities
+python-dotenv>=1.0
+
+# Development
+pytest>=7.0
+pytest-cov>=4.0
+black>=23.0
+ruff>=0.1

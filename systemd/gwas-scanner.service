@@ -1,0 +1,13 @@
+[Unit]
+Description=GWAS v1.1 Wallet Scanner (single cycle)
+After=network.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/opt/gwas
+EnvironmentFile=/home/ubuntu/.gwas_secrets
+Environment=PYTHONPATH=/opt/gwas
+ExecStart=/opt/gwas/venv/bin/python3 scripts/run_scanner.py --once
+StandardOutput=append:/opt/gwas/logs/scanner.log
+StandardError=append:/opt/gwas/logs/scanner_error.log

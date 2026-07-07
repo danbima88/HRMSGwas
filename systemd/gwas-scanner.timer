@@ -1,0 +1,11 @@
+[Unit]
+Description=GWAS v1.1 Scanner Timer (every 5 minutes)
+Requires=gwas-scanner.service
+
+[Timer]
+OnCalendar=*:0/5
+Persistent=true
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target

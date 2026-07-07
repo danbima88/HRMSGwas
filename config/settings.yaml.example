@@ -1,0 +1,103 @@
+alert:
+  conviction:
+    photon_threshold: 90
+    score_threshold: 85
+    weights:
+      pnl: 0.2
+      token_age_bonus: 0.1
+      volume_consistency: 0.15
+      wallet_diversity: 0.1
+      win_streak: 0.15
+      wr: 0.3
+  quality_filter:
+    min_pnl: 0
+    min_trades: 10
+    min_wr: 30
+  safety_filter:
+    max_top10_holder_pct: 50
+    min_lp_usd: 500
+    min_token_age_minutes: 5
+  sensitivity: MEDIUM
+correlation:
+  default_window_hours: 4
+  helius_webhook: true
+  manual_extend_hours: 24
+database:
+  backup:
+    daily: true
+    path: /opt/gwas/data/backups/
+    retention_days: 30
+  indexes:
+  - token_address, alert_timestamp
+  - alert_id
+  - tx_hash
+  path: /opt/gwas/data/gwas.db
+dead_alert:
+  auto_recommend_threshold: 0.2
+  min_window_weeks: 2
+  threshold_alerts: 15
+gmgn:
+  api_key: "YOUR_GMGN_API_KEY"
+  base_url: https://gmgn.ai
+helius:
+  api_key: "YOUR_HELIUS_API_KEY"
+  webhook_secret: "YOUR_WEBHOOK_SECRET"
+logging:
+  backup_count: 5
+  file: /opt/gwas/logs/gwas.log
+  level: INFO
+  max_size_mb: 10
+performance:
+  alert_beat_independent_pct: 10
+  execute_rate_target:
+  - 20
+  - 40
+  false_rate_max: 20
+  miss_rate_max: 10
+  profit_factor_target: 1.2
+  wr_executed_target: 35
+rate_limits:
+  burst_cooldown_minutes: 30
+  per_cycle: 20
+  per_day: 200
+  per_hour: 25
+solana:
+  helius_webhook_id: "YOUR_WEBHOOK_ID"
+  helius_webhook_url: "http://YOUR_VPS_IP:8080/webhook"
+  rpc_url: "https://mainnet.helius-rpc.com/?api-key=YOUR_KEY"
+  user_wallet: "YOUR_WALLET_ADDRESS"
+solauto_bridge:
+  threshold: 70
+  wallet_whitelist:
+  - "WALLET_1"
+  - "WALLET_2"
+  - "WALLET_3"
+  - "WALLET_4"
+  - "WALLET_5"
+success_criteria:
+  phase_2_day_7:
+    execute_rate: 20-40%
+    false_rate: < 20%
+    miss_rate: < 10%
+    net_pnl: "\u2265 0 SOL gross-of-fees"
+  phase_3_week_4:
+    alert_vs_independent_pnl: '> +10%'
+    dead_wallets: < 20% pool
+    execute_rate: 25-35%
+    profit_factor: '> 1.2'
+    wr_executed: '> 35%'
+telegram:
+  alert_prefix: "\U0001F514 GWAS"
+  home_channel: "YOUR_CHANNEL_ID"
+  report_prefix: "\U0001F4CA GWAS"
+  user_id: "YOUR_USER_ID"
+vybe:
+  api_key: "YOUR_VYBE_API_KEY"
+  base_url: https://api.vybenetwork.xyz
+  cross_validate:
+    max_penalty: 0.4
+    negative_pnl_penalty: 0.15
+    not_found_penalty: 0.05
+    not_found_pnl_threshold: 1000.0
+    wr_gap_threshold: 25
+  enabled: false

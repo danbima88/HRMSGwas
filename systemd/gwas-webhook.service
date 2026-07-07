@@ -1,0 +1,19 @@
+[Unit]
+Description=GWAS v1.1 Webhook Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/gwas
+EnvironmentFile=/home/ubuntu/.gwas_secrets
+Environment=PYTHONPATH=/opt/gwas
+Environment=GWAS_DEV_MODE=0
+ExecStart=/opt/gwas/venv/bin/python3 -m gunicorn -w 2 -b 0.0.0.0:8080 src.helius_webhook:app
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/gwas/logs/webhook.log
+StandardError=append:/opt/gwas/logs/webhook_error.log
+
+[Install]
+WantedBy=multi-user.target

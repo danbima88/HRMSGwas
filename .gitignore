@@ -1,0 +1,36 @@
+# ============================================================================
+# GWAS v2.0 — .gitignore
+# ============================================================================
+
+# === SECRETS — NEVER COMMIT ===============================================
+.gmgn_ws_secrets
+config/settings.yaml   # contains live API keys — use settings.yaml.example
+.env
+.env.*
+*.key
+*.pem
+*credentials*.json
+
+# === Python ===============================================================
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+ENV/
+
+# === Runtime data & state =================================================
+*.db
+*.sqlite
+data/
+
+# === Logs =================================================================
+*.log
+logs/
+
+# === OS / editor junk =====================================================
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
