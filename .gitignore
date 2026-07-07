@@ -4,7 +4,8 @@
 
 # === SECRETS — NEVER COMMIT ===============================================
 .gmgn_ws_secrets
-config/settings.yaml   # contains live API keys — use settings.yaml.example
+# contains live API keys — use settings.yaml.example
+config/settings.yaml
 .env
 .env.*
 *.key
